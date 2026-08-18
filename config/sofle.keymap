@@ -9,6 +9,11 @@
  #include <dt-bindings/zmk/bt.h>
  #include <dt-bindings/zmk/rgb.h>
  #include <dt-bindings/zmk/ext_power.h>  
+
+ #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
+ #define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
+
+ #include <dt-bindings/zmk/pointing.h>
  
  
  #define DEF 0
@@ -18,6 +23,8 @@
  #define NUM 4
  #define SYM 5
  #define CL 6
+ #define EXT1 7
+ #define EXT2 8
  
  &lt {
      flavor = "tap-preferred";
@@ -127,6 +134,32 @@
                                   &none &none &none &none &none        &none &none &none &none &none 
                          >;
                  };
- 
+
+                 ext1_layer {
+ // -----------------------------------------------------------------------------------------
+ // spare layer 1 - mouse
+ //
+                         bindings = <
+    &trans &trans &trans &trans &trans &trans                     &trans &trans        &trans        &trans      &trans          &trans
+    &trans &trans &trans &trans &trans &trans                     &trans &mkp MB1       &mkp MB2      &mkp MB3    &mkp MB4        &trans
+    &trans &trans &trans &trans &trans &trans                     &trans &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT &trans
+    &trans &trans &trans &trans &trans &trans &kp C_MUTE &trans           &trans &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_UP &msc SCRL_RIGHT &trans
+                                  &trans &trans &trans &trans &trans        &trans &trans &trans &trans &trans 
+                         >;
+                 };
+
+                 ext2_layer {
+ // -----------------------------------------------------------------------------------------
+ // spare layer 2 (unassigned, future use)
+ //
+                         bindings = <
+    &trans &trans &trans &trans &trans &trans                     &trans &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans                     &trans &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans                     &trans &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans &kp C_MUTE &trans           &trans &trans &trans &trans &trans &trans
+                                  &trans &trans &trans &trans &trans        &trans &trans &trans &trans &trans 
+                         >;
+                 };
+
          };
  };
